@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		.newItem{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>ToDo-List</h1>
+
+	<ul>
+		<li>A Task</li>
+		<li>Another Task</li>
+		<li>Just another Task</li>
+		<li>A Task to do</li>
+		<li>Last Task</li>
+	</ul>
+
+	<form>
+		<input id="inputText" type="text">
+		
+		<input class="submit" id="submitAdd" type="button" value="Add to list">
+	</form>
+	
+	<script>
+		$(document).ready(function(){
+
+			$("li").click(function(){
+				
+				$(this).animate({
+					opacity: 0,
+					paddingLeft: "+500",
+				}, 1000, function() {
+					$(this).remove();
+				});
+			});
+
+			$(".submit").click(function(){
+				var liText = $("#inputText").val();
+				$("ul").append("<li class=\"newItem\">" + liText + "</li>");
+				$(".newItem").fadeIn(1000);
+
+				$("li").click(function(){
+				
+					$(this).animate({
+						opacity: 0,
+						paddingLeft: "+500",
+					}, 1000, function() {
+						$(this).remove();
+					});
+				});
+			});
+		})
+
+
+	</script>
+</body>
+</html>
