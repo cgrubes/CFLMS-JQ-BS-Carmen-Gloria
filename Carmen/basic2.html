@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>ToDo list</title>
+
+    <style>
+        #input {
+            display: none;
+        }
+
+        #button {
+            display: none;
+        }
+
+        #empty {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To Do List</h1>
+    <ul>
+        <li>Go to store</li>
+        <li>Do laundary</li>
+        <li>Feed pets</li>
+        <li>Make bed</li>
+        <li>Do dishes</li>
+       
+    </ul>
+    <br>
+    <input id="input" type="text" value="New Todo...">
+    <br>
+    <input id="button" type="button" value="Add to list">
+    <script>
+        $(document).ready(function () {
+            $("li").on("click", function () {
+                $(this).animate({
+                    opacity: 0.0,
+                    paddingLeft: "+=70"
+                }, 600, function () {
+                    $(this).remove();
+                });
+
+                $("#input").fadeIn(1000);
+                $("#button").fadeIn(2000);
+
+                $("#button").on("click", function () {
+                    var content = $("#input").val();
+                    $("ul").append("<li class = \"new\">" + content + "</li>")
+                    $(".new").fadeIn(700);
+
+
+                    $("li").on("click", function () {
+                        $(this).animate({
+                            opacity: 0.0,
+                            paddingLeft: "+=70"
+                        }, 600, function () {
+                            $(this).remove();
+                        });
+
+                        $("#input").fadeIn(1000);
+                        $("#button").fadeIn(2000);
+
+                    })
+
+
+                    /*      $("#button").on("click", function(){
+                         $("#empty").fadeIn(500);
+                         var content = $("#input").val();
+                         $("#empty").append("<li>"+content+"</li>"); */
+
+
+
+                })
+
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>
